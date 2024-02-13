@@ -19,6 +19,21 @@ The main functionality includes:
 - Azure App Service: https://telecomserviceapi.azurewebsites.net/
 - Swagger UI: https://telecomserviceapi.azurewebsites.net/swagger
 
+## Development
+If you are interested to run in local device, please change the `WithOrigins` to `https://localhost:44309` in TelecomService.Api's `Startup.cs` as below:
+~~~
+// Add CORS services
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+        builder.WithOrigins("https://localhost:44309") 
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+~~~
+
+**In order to access the database server, please let me know your client IPv4 address.**
+
 ## Assumptions
 - No adding, updating, and deleting actions for Customer
 - Deleting and inactiving a phone number operations are not included in the system
